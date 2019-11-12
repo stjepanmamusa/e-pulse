@@ -1,0 +1,19 @@
+{
+  "name": "e-pulse",
+  "version": "1.0.0",
+  "description": "IoT application for a university telehealth project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/smamusa/e-pulse.git"
+  },
+  "author": "Stjepan Mamuša",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/smamusa/e-pulse/issues"
+  },
+  "homepage": "https://github.com/smamusa/e-pulse#readme"
+}
