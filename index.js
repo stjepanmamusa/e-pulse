@@ -1,22 +1,12 @@
 // Included needed modules
 const express = require("express");
 const path = require("path");
-const fs = require("fs");
-const bodyParser = require("body-parser");
 
 // Vars setup
 const PORT = process.env.PORT || 8080;
 
 // Init express
 const app = express();
-
-fs.readdir(__dirname, function(err, items) {
-  console.log(items);
-
-  for (var i = 0; i < items.length; i++) {
-    console.log(items[i]);
-  }
-});
 
 //Creating endpoints / route handlers
 app.get("/", (req, res) => {
@@ -26,4 +16,27 @@ app.get("/", (req, res) => {
 
 // Listen on a port
 app.listen(PORT, () => console.log(`Listening on port : ${PORT}`));
-console.log(path.join(__dirname, "public", "index.html"));
+
+//Heroku connect to database
+
+const { Client } = require("pg");
+
+const client = new Client({
+  connectionString: process.env.DATABASE_URL,
+  ssl: true
+});
+
+client.connect();
+
+client.query("SELECT * FROM public.room_data;", (err, res) => {
+  if (err) throw err;
+  for (let row of res.rows) {
+    var data = JSON.stringify(row);
+    console.log(data);
+  }
+  client.end();
+});
+
+app.get("/data", (req, res) => {
+  res.send(data);
+});
