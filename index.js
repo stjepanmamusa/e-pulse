@@ -11,8 +11,10 @@ const app = express();
 
 //Creating endpoints / route handlers
 app.get("/", (req, res) => {
+  res.send(__dirname);
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
 // Listen on a port
 app.listen(PORT, () => console.log(`Listening on port : ${PORT}`));
+console.log(path.join(__dirname, "public", "index.html"));
