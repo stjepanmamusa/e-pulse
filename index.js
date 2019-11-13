@@ -1,11 +1,18 @@
-const http = require("http");
-const port = process.env.PORT || 8080;
+// Included needed modules
+const express = require("express");
+const path = require("path");
+const bodyParser = require("body-parser");
 
-http
-  .createServer((req, res) => {
-    res.write("Hello World");
-    res.end();
-  })
-  .listen(port);
+// Vars setup
+const PORT = process.env.PORT || 8080;
 
-console.log(`Listening on port : ${port}`);
+// Init express
+const app = express();
+
+//Creating endpoints / route handlers
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+});
+
+// Listen on a port
+app.listen(PORT, () => console.log(`Listening on port : ${PORT}`));

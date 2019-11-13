@@ -16,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/smamusa/e-pulse/issues"
   },
-  "homepage": "https://github.com/smamusa/e-pulse#readme"
+  "homepage": "https://github.com/smamusa/e-pulse#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "pg": "^7.12.1",
+    "sequelize": "^5.21.2"
+  }
 }
